@@ -223,7 +223,7 @@ main (int argc, char *argv[])
 
   Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
   em->SetAttribute ("ErrorRate", DoubleValue (0.00001));
-  ndc_hub_3.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+  ndc_hub_4.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
 
   //InternetStackHelper stack;
   //stack.Install (nodes);
@@ -251,7 +251,7 @@ main (int argc, char *argv[])
 
   /* Generate Application. */
   uint16_t port_tcp_0 = 1090;
-  Address sinkAddress (InetSocketAddress (iface_ndc_hub_3.GetAddress (1), port_tcp_0));
+  Address sinkAddress (InetSocketAddress (iface_ndc_hub_5.GetAddress (1), port_tcp_0));
   Address sinkLocalAddress_tcp_0 (InetSocketAddress (Ipv4Address::GetAny (), port_tcp_0));
   PacketSinkHelper sinkHelper_tcp_0 ("ns3::TcpSocketFactory", sinkLocalAddress_tcp_0);
   ApplicationContainer sinkApp_tcp_0 = sinkHelper_tcp_0.Install (term_3);
@@ -262,7 +262,7 @@ main (int argc, char *argv[])
 
   Ptr<MyApp> app = CreateObject<MyApp> ();
   app->Setup (ns3TcpSocket, sinkAddress, 1040, 1000, DataRate ("1Mbps"));
-  term_3.Get (0)->AddApplication (app);
+  term_0.Get (0)->AddApplication (app);
   app->SetStartTime (Seconds (0.));
   app->SetStopTime (Seconds (20.));
 
